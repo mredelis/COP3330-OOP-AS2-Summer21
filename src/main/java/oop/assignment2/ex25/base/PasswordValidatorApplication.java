@@ -1,16 +1,16 @@
 package oop.assignment2.ex25.base;
 
 /*
- *  UCF COP3330 Summer 2021 Assignment 1 Solution
+ *  UCF COP3330 Summer 2021 Assignment 2 Solution
  *  Copyright 2021 Edelis Molina
  *
  *  Exercise 25 - Password Strength Indicator
  */
 
-public class Solution25 {
+public class PasswordValidatorApplication {
 
     public static void main(String[] args) {
-        Solution25 app = new Solution25();
+        PasswordValidatorApplication app = new PasswordValidatorApplication();
 
         // passwordValidator
         // return 1 if VERY weak password

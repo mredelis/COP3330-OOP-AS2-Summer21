@@ -1,7 +1,7 @@
 package oop.assignment2.ex31.base;
 
 /*
- *  UCF COP3330 Summer 2021 Assignment 1 Solution
+ *  UCF COP3330 Summer 2021 Assignment 2 Solution
  *  Copyright 2021 Edelis Molina
  *
  *  Exercise 31 - Karvonen Heart Rate

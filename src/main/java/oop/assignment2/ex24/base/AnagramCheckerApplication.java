@@ -1,8 +1,15 @@
 package oop.assignment2.ex24.base;
 
+/*
+ *  UCF COP3330 Summer 2021 Assignment 2 Solution
+ *  Copyright 2021 Edelis Molina
+ *
+ *  Exercise 24 - Anagram Checker
+ */
+
 import java.util.Scanner;
 
-public class Solution24 {
+public class AnagramCheckerApplication {
     private static final Scanner in = new Scanner(System.in);
 
     // Class variables bc we made them static
