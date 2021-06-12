@@ -9,7 +9,7 @@ package oop.assignment2.ex28.base;
 
 import java.util.Scanner;
 
-public class Solution28 {
+public class AddingNumbersApplication {
 
     private static final Scanner input = new Scanner(System.in);
 
