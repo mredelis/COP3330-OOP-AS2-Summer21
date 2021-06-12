@@ -5,8 +5,7 @@ public class InputValidator {
     public String validateFirstName(String firstname){
         if(firstname.isBlank())
             return "The first name must be at least 2 characters long.\nThe fist name must be filled in.\n";
-        // Exercise did not ask for this, but also checking first name only contains letters
-        else if(firstname.length() < 2 || !firstname.matches("^[A-Za-z]+$"))
+        else if(firstname.length() < 2)
             return "The first name must be at least 2 characters long.\n";
         else
             return "";
@@ -15,7 +14,7 @@ public class InputValidator {
     public String validateLastName(String lastname){
         if(lastname.isBlank())
             return "The last name must be at least 2 characters long.\nThe last name must be filled in.\n";
-        else if(lastname.length() < 2 || !lastname.matches("^[A-Za-z]+$"))
+        else if(lastname.length() < 2)
             return "The last name must be at least 2 characters long.\n";
         else
             return "";
