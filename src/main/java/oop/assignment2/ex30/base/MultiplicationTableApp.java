@@ -10,21 +10,24 @@ package oop.assignment2.ex30.base;
 public class MultiplicationTableApp {
     public static void main(String[] args) {
         MultiplicationTableApp app = new MultiplicationTableApp();
-        int width = 4;
-        int height = 3;
+        int width = 2;
+        int height = 2;
 
         String table = app.createMultiplicationTable(width, height);
+        System.out.print(table);
 
     }
 
     public String createMultiplicationTable(int Width, int Height){
+        String output = "";
         for(int i = 1; i <= Width; i++){
             for(int j = 1; j <= Height; j++){
-                System.out.format("%4d",i*j);
+//                System.out.format("%4d",i*j);
+                output += String.format("%4d", i*j);
             }
-            System.out.println();
+            output += String.format("\n");
         }
-
-        return "Edelis";
+//        System.out.print(output);
+        return output;
     }
 }
