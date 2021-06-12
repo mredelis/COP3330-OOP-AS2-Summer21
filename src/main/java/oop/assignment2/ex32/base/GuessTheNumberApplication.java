@@ -30,58 +30,74 @@ public class GuessTheNumberApplication {
 
         int number;
 
-        do {
-            int count = 0;
+        do { // this loop is to check if the user wants to play again
 
-            // Return false is input is not an Integer Value
-            System.out.print("Enter the difficulty level (1, 2, or 3): ");
-            diffLevel = input.nextLine();
-            isInteger = app.validateInput(diffLevel);
-            if(!isInteger || (Integer.parseInt(diffLevel) < 0 || Integer.parseInt(diffLevel) > 4)){
-                System.out.println("Sorry, Difficulty Level must be an Integer from 0-3!");
-                flagDifficultyLoop = true;
-                continue;
-            }
+            ///////////////////////////////////////////////////////////////////////
+            do { // this loop is to check if the difficulty level entry is valid
 
-            int toIntegerDiffLevel = Integer.parseInt(diffLevel);
+                int count = 0;
 
-            if(toIntegerDiffLevel == 1){
-                // call method with max 10
-                GuessTheNumber guessNumber = new GuessTheNumber(10);
-
-                while (!guessNumber.numberFound){
-                    count++; // First try, user can get the number in first try, then "you got it in 1 guess
-
-                    do {
-                        System.out.print("I have my number. What's your guess? ");
-                        userGuessedNumber = input.nextLine();
-                        isIntegerInnerLoop = app.validateInput(userGuessedNumber); // boolean
-
-                        if(!isIntegerInnerLoop){
-                            System.out.println("Sorry, you must enter a valid integer!");
-                            count++;
-                            flagUserGuessedNumberLoop = true;
-                            continue;
-                        }
-                    } while (flagUserGuessedNumberLoop);
-
-                    number = Integer.parseInt(userGuessedNumber);
-                    System.out.println(guessNumber.userMessages(number));
+                // Return false is input is not an Integer Value
+                System.out.print("Enter the difficulty level (1, 2, or 3): ");
+                diffLevel = input.nextLine();
+                isInteger = app.validateInput(diffLevel);
+                if (!isInteger || (Integer.parseInt(diffLevel) < 0 || Integer.parseInt(diffLevel) > 4)) {
+                    System.out.println("Sorry, Difficulty Level must be an Integer from 0-3!");
+                    flagDifficultyLoop = true;
+                    continue;
                 }
-            } // First difficulty level
+
+                // Process the three difficulty levels
+                int toIntegerDiffLevel = Integer.parseInt(diffLevel);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                if(toIntegerDiffLevel == 1){
+                    // call method with max 10
+                    GuessTheNumber guessNumber = new GuessTheNumber(10);
+
+                    System.out.print("I have my number. What's your guess? ");
+
+                    while (!guessNumber.numberFound){
+                        count++; // First try, user can get the number in first try, then "you got it in 1 guess
+                        do {
+                            userGuessedNumber = input.nextLine();
+                            isIntegerInnerLoop = app.validateInput(userGuessedNumber); // boolean
+
+                            if(!isIntegerInnerLoop){
+                                System.out.println("Sorry, you must enter a valid integer!");
+                                count++;
+                                flagUserGuessedNumberLoop = true;
+                                continue;
+                            }
+                        } while (flagUserGuessedNumberLoop);
+
+                        number = Integer.parseInt(userGuessedNumber);
+
+                        System.out.print(guessNumber.userMessages(number));
+                    }
+
+                    System.out.println("in " + count + " guesses!");
+                } // First difficulty level
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                if(toIntegerDiffLevel == 2){
+                    // call method with max 100
+                }
 
 
-            if(toIntegerDiffLevel == 2){
-                // call method with max 100
-            }
+                else{
+                    // call method with max 1000
+                }
 
 
-            else{
-                // call method with max 1000
-            }
+            } while (flagDifficultyLoop);
 
 
-        } while (flagDifficultyLoop);
+            //////////////////////////////////////////////////////////////////////
+            System.out.print("Do you wish to play again (Y/N)? ");
+
+        } while (input.nextLine().equalsIgnoreCase("Y"));
+
+
 
     }
 
@@ -96,24 +112,7 @@ public class GuessTheNumberApplication {
             return false;
         }
         return true;
-//        while (true){
-//            System.out.print("What is the rate of return? ");
-//            try {
-//                rateOfReturn = in.nextDouble();
-//            } catch (InputMismatchException e){
-//                System.out.println("Sorry. That's not a valid input.");
-//                in.next();
-//                continue;
-//            }
-//            if(Math.abs(rateOfReturn) < 0.0001) {
-//                // equal to zero but floating point comparison
-//                System.out.println("Sorry. That's not a valid input.");
-////                in.next();
-//                continue;
-//            }
-//            break;
-//        }
-//
-//        return rateOfReturn;
+
     }
+
 }

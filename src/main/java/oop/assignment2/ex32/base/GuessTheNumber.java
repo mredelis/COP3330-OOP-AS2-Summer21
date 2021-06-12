@@ -16,11 +16,11 @@ public class GuessTheNumber {
     public String userMessages(int playerGuessedNum){
         if(playerGuessedNum == ranNumber){
             this.numberFound = true;
-            return "You Win!";
+            return "You got it "; // concat output statement with main class count
         }
         if(playerGuessedNum < ranNumber)
-            return "Too low. Guess again:";
+            return "Too low. Guess again: ";
 
-        return "Too high. Guess again:";
+        return "Too high. Guess again: ";
     }
 }
