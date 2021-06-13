@@ -11,42 +11,41 @@ public class DifficultyLevel {
         int max = this.setLevelMax(level);
 
         GuessTheNumber guessNumber = new GuessTheNumber(max);
-        System.out.print("I have my number. What's your guess? ");
 
         int count = 0;
         int number;
-
         String userGuessedNumberStr;
-
         boolean isInteger;
-        boolean flagUserGuessedNumberLoop = false;
+        boolean flagInvalidEntry;
+
+        System.out.print("I have my number. What's your guess? ");
 
         while (!guessNumber.numberFound) {
-            count++; // First try, user can get the number in first try, then "you got it in 1 guess"
 
-            do { // Difficulty level loop
+            do {
+                flagInvalidEntry = false;
                 userGuessedNumberStr = in.nextLine();
-
                 InputValidator validateUserEntry = new InputValidator(userGuessedNumberStr);
                 isInteger = validateUserEntry.validateInput(); // boolean
 
                 if (!isInteger) {
-                    System.out.println("Sorry, you must enter a valid integer!");
-
+                    System.out.print("Sorry, you must enter a valid integer! Try again: ");
                     count++;
-                    flagUserGuessedNumberLoop = true;
-
+                    flagInvalidEntry = true;
                 }
-            } while (flagUserGuessedNumberLoop);
+
+            } while (flagInvalidEntry);
 
             number = Integer.parseInt(userGuessedNumberStr);
+            count++;
 
             System.out.print(guessNumber.userMessages(number));
         }
 
+        // Found it
         System.out.println("in " + count + " guesses!");
-
     }
+
 
     private int setLevelMax(int level) {
         if (level == 1)
@@ -56,5 +55,6 @@ public class DifficultyLevel {
         else
             return 1000;
     }
+
 }
 

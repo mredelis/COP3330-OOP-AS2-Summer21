@@ -14,21 +14,23 @@ public class GuessTheNumberApplication {
 
     public static void main(String[] args) {
 
-        System.out.println("Let's play Guess the Number!\n");
+        System.out.println("Let's play Guess the Number!");
 
         boolean isInteger;
+        boolean flagDifficultyLoop;
 
         String diffLevelStr;
 
-        boolean flagDifficultyLoop = false;
+
 
 
         do { // this loop is to check if the user wants to play again
 
             do { // this loop is to check if the difficulty level entry is valid
+                flagDifficultyLoop = false;
 
                 // Return false is input is not an Integer Value
-                System.out.print("Enter the difficulty level (1, 2, or 3): ");
+                System.out.print("\nEnter the difficulty level (1, 2, or 3): ");
                 diffLevelStr = input.nextLine();
 
                 InputValidator validateDiffLevel = new InputValidator(diffLevelStr);
@@ -59,7 +61,7 @@ public class GuessTheNumberApplication {
             } while (flagDifficultyLoop);
 
 
-            System.out.print("Do you wish to play again (Y/N)? ");
+            System.out.print("\nDo you wish to play again (Y/N)? ");
 
         } while (input.nextLine().equalsIgnoreCase("Y"));
 
