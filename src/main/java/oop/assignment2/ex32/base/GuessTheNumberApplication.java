@@ -22,8 +22,6 @@ public class GuessTheNumberApplication {
         String diffLevelStr;
 
 
-
-
         do { // this loop is to check if the user wants to play again
 
             do { // this loop is to check if the difficulty level entry is valid
@@ -36,7 +34,7 @@ public class GuessTheNumberApplication {
                 InputValidator validateDiffLevel = new InputValidator(diffLevelStr);
                 isInteger = validateDiffLevel.validateInput();
 
-                if (!isInteger || (Integer.parseInt(diffLevelStr) < 0 || Integer.parseInt(diffLevelStr) > 4)) {
+                if (!isInteger || (Integer.parseInt(diffLevelStr) <= 0 || Integer.parseInt(diffLevelStr) > 4)) {
                     System.out.println("Sorry, Difficulty Level must be an Integer from 0-3!");
                     flagDifficultyLoop = true;
                     continue;

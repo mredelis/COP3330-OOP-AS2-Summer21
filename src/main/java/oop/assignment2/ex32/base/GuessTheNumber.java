@@ -7,9 +7,9 @@ public class GuessTheNumber {
     boolean numberFound = false; // if number is guessed
 
     // Constructor
-    public GuessTheNumber(int max){
+    public GuessTheNumber(int max, int min){
         Random random = new Random();
-        this.ranNumber = random.nextInt(max) + 1;
+        this.ranNumber = random.nextInt((max-min) + 1) + min;
     }
 
 

@@ -10,7 +10,7 @@ public class DifficultyLevel {
 
         int max = this.setLevelMax(level);
 
-        GuessTheNumber guessNumber = new GuessTheNumber(max);
+        GuessTheNumber guessNumber = new GuessTheNumber(max, 1);  // min is always 1
 
         int count = 0;
         int number;
