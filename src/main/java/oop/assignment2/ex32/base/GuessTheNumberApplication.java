@@ -7,7 +7,6 @@ package oop.assignment2.ex32.base;
  *  Exercise 32 - Guess the Number Game
  */
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GuessTheNumberApplication {
@@ -15,103 +14,56 @@ public class GuessTheNumberApplication {
 
     public static void main(String[] args) {
 
-
-        GuessTheNumberApplication app = new GuessTheNumberApplication();
-
-
         System.out.println("Let's play Guess the Number!\n");
 
         boolean isInteger;
-        boolean isIntegerInnerLoop;
-        String diffLevel;
-        String userGuessedNumber;
-        boolean flagDifficultyLoop = false;
-        boolean flagUserGuessedNumberLoop = false;
 
-        int number;
+        String diffLevelStr;
+
+        boolean flagDifficultyLoop = false;
+
 
         do { // this loop is to check if the user wants to play again
 
-            ///////////////////////////////////////////////////////////////////////
             do { // this loop is to check if the difficulty level entry is valid
-
-                int count = 0;
 
                 // Return false is input is not an Integer Value
                 System.out.print("Enter the difficulty level (1, 2, or 3): ");
-                diffLevel = input.nextLine();
-                isInteger = app.validateInput(diffLevel);
-                if (!isInteger || (Integer.parseInt(diffLevel) < 0 || Integer.parseInt(diffLevel) > 4)) {
+                diffLevelStr = input.nextLine();
+
+                InputValidator validateDiffLevel = new InputValidator(diffLevelStr);
+                isInteger = validateDiffLevel.validateInput();
+
+                if (!isInteger || (Integer.parseInt(diffLevelStr) < 0 || Integer.parseInt(diffLevelStr) > 4)) {
                     System.out.println("Sorry, Difficulty Level must be an Integer from 0-3!");
                     flagDifficultyLoop = true;
                     continue;
                 }
 
                 // Process the three difficulty levels
-                int toIntegerDiffLevel = Integer.parseInt(diffLevel);
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                if(toIntegerDiffLevel == 1){
-                    // call method with max 10
-                    GuessTheNumber guessNumber = new GuessTheNumber(10);
+                int toIntegerDiffLevel = Integer.parseInt(diffLevelStr);
 
-                    System.out.print("I have my number. What's your guess? ");
-
-                    while (!guessNumber.numberFound){
-                        count++; // First try, user can get the number in first try, then "you got it in 1 guess
-                        do {
-                            userGuessedNumber = input.nextLine();
-                            isIntegerInnerLoop = app.validateInput(userGuessedNumber); // boolean
-
-                            if(!isIntegerInnerLoop){
-                                System.out.println("Sorry, you must enter a valid integer!");
-                                count++;
-                                flagUserGuessedNumberLoop = true;
-                                continue;
-                            }
-                        } while (flagUserGuessedNumberLoop);
-
-                        number = Integer.parseInt(userGuessedNumber);
-
-                        System.out.print(guessNumber.userMessages(number));
-                    }
-
-                    System.out.println("in " + count + " guesses!");
-                } // First difficulty level
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                if(toIntegerDiffLevel == 2){
-                    // call method with max 100
+                if (toIntegerDiffLevel == 1){
+                    DifficultyLevel level1 = new DifficultyLevel();
+                    level1.startPlaying(1);
                 }
-
-
+                else if(toIntegerDiffLevel == 2){
+                    DifficultyLevel level2 = new DifficultyLevel();
+                    level2.startPlaying(2);
+                }
                 else{
-                    // call method with max 1000
+                    DifficultyLevel level3 = new DifficultyLevel();
+                    level3.startPlaying(3);
                 }
-
 
             } while (flagDifficultyLoop);
 
 
-            //////////////////////////////////////////////////////////////////////
             System.out.print("Do you wish to play again (Y/N)? ");
 
         } while (input.nextLine().equalsIgnoreCase("Y"));
 
-
-
-    }
-
-
-    public boolean validateInput(String difficultyLevel){
-        int isInteger;
-        try {
-            isInteger = Integer.parseInt(difficultyLevel);
-        } catch (NumberFormatException ex){
-            // temporary
-            System.out.println("Sorry, from validate input function!");
-            return false;
-        }
-        return true;
+        System.out.println("Good bye!");
 
     }
 

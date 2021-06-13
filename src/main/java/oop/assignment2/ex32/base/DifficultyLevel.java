@@ -4,54 +4,57 @@ import java.util.Scanner;
 
 public class DifficultyLevel {
     private static final Scanner in = new Scanner(System.in);
-    private final int level;
-
-    // Constructor
-    public DifficultyLevel(int difficultyLevel) {
-        this.level = difficultyLevel;
-    }
 
 
-    public void setLevelMax() {
-        int max;
-        if (this.level == 1)
-            max = 10;
-        else if (this.level == 2)
-            max = 100;
-        else
-            max = 3;
+    public void startPlaying(int level) {
 
-        this.play(max);
-    }
+        int max = this.setLevelMax(level);
 
-    public void play(int max) {
         GuessTheNumber guessNumber = new GuessTheNumber(max);
         System.out.print("I have my number. What's your guess? ");
 
         int count = 0;
-        String userGuessedNumber;
-        boolean isInt;
+        int number;
+
+        String userGuessedNumberStr;
+
+        boolean isInteger;
+        boolean flagUserGuessedNumberLoop = false;
+
         while (!guessNumber.numberFound) {
             count++; // First try, user can get the number in first try, then "you got it in 1 guess"
-            do {
-                userGuessedNumber = in.nextLine();
-                isInt = app.validateInput(userGuessedNumber); // boolean
 
-                if (!isIntegerInnerLoop) {
+            do { // Difficulty level loop
+                userGuessedNumberStr = in.nextLine();
+
+                InputValidator validateUserEntry = new InputValidator(userGuessedNumberStr);
+                isInteger = validateUserEntry.validateInput(); // boolean
+
+                if (!isInteger) {
                     System.out.println("Sorry, you must enter a valid integer!");
+
                     count++;
                     flagUserGuessedNumberLoop = true;
-                    continue;
+
                 }
             } while (flagUserGuessedNumberLoop);
 
-            number = Integer.parseInt(userGuessedNumber);
+            number = Integer.parseInt(userGuessedNumberStr);
 
             System.out.print(guessNumber.userMessages(number));
         }
 
         System.out.println("in " + count + " guesses!");
-    } // First difficulty level
 
+    }
+
+    private int setLevelMax(int level) {
+        if (level == 1)
+            return 10;
+        else if (level == 2)
+            return  100;
+        else
+            return 1000;
+    }
 }
 

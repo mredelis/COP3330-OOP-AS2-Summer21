@@ -6,4 +6,14 @@ public class InputValidator {
     public InputValidator(String buffer){
         this.str = buffer;
     }
+
+    public boolean validateInput(){
+        int isInteger;
+        try {
+            isInteger = Integer.parseInt(this.str);
+        } catch (NumberFormatException ex){
+            return false;
+        }
+        return true;
+    }
 }
