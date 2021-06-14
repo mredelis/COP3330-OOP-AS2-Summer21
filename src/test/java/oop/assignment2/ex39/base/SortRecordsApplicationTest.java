@@ -46,6 +46,5 @@ class SortRecordsApplicationTest {
         assertEquals("Jiawan", mapList.get(1).get("last"));
         assertEquals("Morning", mapList.get(2).get("last"));
         assertEquals("Santiago", mapList.get(3).get("last"));
-
     }
 }
