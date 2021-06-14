@@ -23,20 +23,8 @@ public class FilterRecordsApplication {
             List<Map<String, String>> searchResults = myApp.filtering(searchString, employeeList);
             myApp.printTable(searchResults);
         }
-
-
-
-
-//        for (int i = 0; i < employeeList.size(); i++) {
-//            if (employeeList.get(i).get("first").contains(searchString) || employeeList.get(i).get("last").contains(searchString)) {
-//
-//                System.out.printf("%-30s%s%-25s%s%-20s%n", employeeList.get(i).get("first") + " " + employeeList.get(i).get("last"),
-//                    "|", employeeList.get(i).get("position"), " |", employeeList.get(i).get("date"));
-//            }
-//
-//
-//        }
-
+        else
+            System.out.println("Search string can not be blank ");
     }
 
 
