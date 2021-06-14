@@ -9,8 +9,6 @@ public class MapSort {
 
     public List<Map<String, String>> createListOfEmployeeMapsToSort(){
 
-        List<Map<String, String>> employeeList = new ArrayList<>();
-
         // map1 employee 1
         Map<String, String> map1 = new HashMap<>();
         map1.put("first", "John");
@@ -48,6 +46,8 @@ public class MapSort {
         map6.put("position", "Web Developer");
         map6.put("date", "2015-12-18");
 
+
+        List<Map<String, String>> employeeList = new ArrayList<>();
         employeeList.add(map1);
         employeeList.add(map2);
         employeeList.add(map3);

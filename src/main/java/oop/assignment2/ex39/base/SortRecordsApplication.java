@@ -14,7 +14,9 @@ public class SortRecordsApplication {
         app.printColumnHeadings("Here is the unsorted list");
         app.printTable(employeeList);
 
-        Collections.sort(employeeList, (m1, m2) -> m1.get("last").compareTo(m2.get("last")));
+        app.Sorting(employeeList);
+//        Collections.sort(employeeList, (m1, m2) -> m1.get("last").compareTo(m2.get("last")));
+
 
         app.printColumnHeadings("Here is the sorted list!");
         app.printTable(employeeList);
@@ -36,4 +38,12 @@ public class SortRecordsApplication {
                 "|", stringStringMap.get("position"), " |", stringStringMap.get("date"));
         }
     }
+
+    public void Sorting(List<Map<String, String>> employeeList){
+        // Using Lambda Expressions
+        Comparator<Map<String, String>> sortByLastName = Comparator.comparing(x -> x.get("last"));
+        employeeList.sort(sortByLastName);
+    }
+
+
 }
